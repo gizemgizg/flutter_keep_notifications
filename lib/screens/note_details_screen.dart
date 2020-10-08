@@ -230,7 +230,7 @@ class _NoteDetailsScreenState extends State<NoteDetailsScreen> {
       if (note.trashed == 'false')
         Builder(
           builder: (context) =>
-              _drawAppBarActionIcon(Icons.add_alert, 'Uyarı Ekle', () async {
+              _drawAppBarActionIcon(Icons.save_alt, 'Uyarı Ekle', () async {
             String res = await _showAddReminderDialog();
             _handleAddReminderResult(context, res);
           }),

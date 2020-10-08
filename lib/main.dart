@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:notes/login/login.dart';
 import 'package:provider/provider.dart';
+import 'app_localizations.dart';
 import 'utils/app_theme.dart';
 import './screens/notes_home_screen.dart';
 import './database/app_database.dart';
@@ -46,17 +49,35 @@ main() async {
 
 class MyApp extends StatelessWidget {
   static final navigatorKey = new GlobalKey<NavigatorState>();
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => AppTheme(),
       child: Consumer<AppTheme>(
         builder: (context, notifier, child) => MaterialApp(
+          supportedLocales: [
+            Locale('en', 'US'),
+          ],
+          localizationsDelegates: [
+            AppLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate
+          ],
+          localeResolutionCallback: (locale, supportedLocales) {
+            for (var supportedLocale in supportedLocales) {
+              if (supportedLocale.languageCode == locale.languageCode &&
+                  supportedLocale.countryCode == locale.countryCode) {
+                return supportedLocale;
+              }
+            }
+            return supportedLocales.first;
+          },
           navigatorKey: navigatorKey,
-          title: 'NotesAppDev',
+          title: 'DirectNote',
           debugShowCheckedModeBanner: false,
           theme: notifier.darkTheme ? dark : light,
-          home: NotesHomeScreen('Tüm Notlar'),
+          home: Login(),
         ),
       ),
     );

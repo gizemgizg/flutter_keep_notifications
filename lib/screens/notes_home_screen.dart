@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:notes/screens/search_list.dart';
 import 'package:sqflite/sqflite.dart';
 import '../widgets/scaffold_wrapper_widget.dart';
 import '../widgets/app_drawer.dart';
@@ -56,29 +57,20 @@ class _NotesHomeScreenState extends State<NotesHomeScreen> {
         widget.appBarTitle,
       ),
       actions: <Widget>[
-        settings.showAsGridView
-            ? notesViewTypeIcon(
-                Icon(
-                  Icons.list,
-                ),
-                'Liste Görünümü Olarak Göster')
-            : notesViewTypeIcon(
-                Icon(
-                  Icons.grid_on,
-                ),
-                'Izgara Görünümü Olarak Göster'),
-        settings.showListByValue == 0
-            ? settings.sortByAsc
-                ? sortingIcon(
-                    Icon(FontAwesome.sort_alpha_desc), 'Azalan şekilde sırala')
-                : sortingIcon(
-                    Icon(FontAwesome.sort_alpha_asc), 'Artan şekilde sırala')
-            : settings.sortByAsc
-                ? sortingIcon(Icon(FontAwesome.sort_numeric_desc),
-                    'Azalan şekilde sırala')
-                : sortingIcon(
-                    Icon(FontAwesome.sort_numeric_asc), 'Artan şekilde sırala'),
         if (widget.appBarTitle != 'Hatırlatma') buildDropDownButton,
+        IconButton(
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return SearchList();
+                },
+              ),
+            );
+          },
+          icon: Icon(Icons.search),
+        ),
       ],
     );
   }
@@ -202,6 +194,7 @@ class _NotesHomeScreenState extends State<NotesHomeScreen> {
         tooltip: 'Not Ekle',
         child: Icon(
           Icons.add,
+          color: Colors.white,
         ),
       ),
     );

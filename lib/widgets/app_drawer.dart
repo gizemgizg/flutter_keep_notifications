@@ -3,8 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:notes/screens/notes_home_screen.dart';
 import '../screens/app_settings_screen.dart';
 
-//coder gizemgizg
-
 class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -14,13 +12,15 @@ class AppDrawer extends StatelessWidget {
         children: <Widget>[
           //Drawer Header
           DrawerHeader(
-            decoration: BoxDecoration(color: Colors.blueAccent),
+            decoration: BoxDecoration(
+              color: Colors.teal.shade300,
+            ),
             child: Center(
               child: Text(
                 'Not Defteri',
                 style: GoogleFonts.lato(
                     textStyle: TextStyle(
-                        fontSize: 24,
+                        fontSize: 30,
                         color: Colors.white,
                         fontWeight: FontWeight.bold)),
               ),

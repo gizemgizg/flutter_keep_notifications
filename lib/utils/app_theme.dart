@@ -17,7 +17,7 @@ ThemeData light = ThemeData(
     iconTheme: IconThemeData(color: Colors.black),
   ),
   scaffoldBackgroundColor: Colors.white,
-  accentColor: Colors.blueAccent,
+  accentColor: Colors.teal.shade300,
   iconTheme: IconThemeData(color: Colors.black),
 );
 
@@ -34,7 +34,7 @@ ThemeData dark = ThemeData(
     ),
     iconTheme: IconThemeData(color: Colors.white),
   ),
-  accentColor: Colors.blueAccent,
+  accentColor: Colors.red,
   iconTheme: IconThemeData(color: Colors.white),
   brightness: Brightness.dark,
 );
